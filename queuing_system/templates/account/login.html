@@ -1,0 +1,52 @@
+{% load static %}
+  <head>
+    <title>LOGIN</title>
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/login.css' %}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/inserir-icone-de-imagem.png' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  </head>
+
+  {% include 'account/alerts(JS).html' %}
+  {% include 'include/alert_error_message.html' %}
+
+<body> 
+    <div class="p-3" id="login_box">
+        <div class="container">
+            <div class="d-flex justify-content-center mb-4 ms-3">
+              <img src="{% static 'img/braso_iapen.png' %}">
+            </div>
+            <form action="{% url 'login' %}" method="post">
+              {% csrf_token %}
+              <div id="internal_box">
+                  <div class="form-group mb-2 d-flex justify-content-center">
+                    <div class="form-group">
+                      <label for="email">Usuario:</label>
+                      <input type="text" id="username" name="username">
+                    </div>
+                  </div>
+
+                  <div class="form-group d-flex justify-content-center">
+                    <div class="form-group">
+                      <label for="senha" class="me-2">Senha:</label>
+                      <input type="text" id="senha" name="senha">
+                    </div>
+                  </div>
+              </div>
+
+              <div class="d-flex justify-content-center mt-4"> 
+                <button onclick="validarDados()" type="button" class="btn btn-primary" id="btn_enviar">
+                  Enviar
+                </button>
+              </div>
+            </form>
+              <p class="d-flex justify-content-center" style="font-size: 12px; margin-top: 30%;">&copy; DDMS-Divisão de manutenção e desenvolvimento de sistemas
+                <img src="{% static 'img/IAPEN_full_box_icon_1024.ico' %}" style="width: 20px; height: 20px;">
+              </p>
+        </div>
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/login.js' %}"></script>
+</body>
+
+

@@ -1,0 +1,51 @@
+{% load static %}
+   <head>
+       <title>{% block title %}HOME |{% endblock %}</title>
+       <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+       <link rel="stylesheet" href="{% static 'css/main.css' %}">
+       <link rel="shortcut icon" type="image/png" href="{% static 'img/inserir-icone-de-imagem.png' %}">
+       {% block css %}
+       {% endblock css %}
+   </head>
+
+   {% include 'include/alert_error_message.html' %}
+
+   <body>
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'home' %}">
+            <img src="{% static 'img/braso_iapen.png' %}" class="rounded-pill" width="40px"> 
+            <span>Desk-TI</span>
+          </a>
+        </div>
+
+        <div class="container-fluid position-relative" id="user_cont1">
+          <a class="navbar-brand position-absolute top-100 start-50 translate-middle border border-1 p-1 rounded" href="{% url 'usuario' %}" style="margin-left: 33%;">
+            <span>user: {{ user.username }}</span>
+          </a>
+        </div>
+        <div class="container-fluid position-relative" id="user_cont2">
+          <a class="navbar-brand position-absolute top-100 start-50 translate-middle">
+              <a href="{% url 'logout' %}">
+                  <button class="btn btn-danger" style="width: 80px;">
+                      Sair
+                  </button>
+              </a>
+          </a>
+        </div>
+    </nav>
+
+    {% block content %}
+
+    {% endblock content %}
+    
+    <footer class="fixed-bottom" style="backdrop-filter: blur(5px);">
+        <span class="text-white">&copy; DDMS-Divisão de manutenção e desenvolvimento de sistemas
+          <img src="{% static 'img/IAPEN_full_box_icon_1024.ico' %}" style="width: 20px; height: 20px;">
+        </span>
+    </footer>
+
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+      {% block js %}
+      {% endblock js %}
+   </body>
