@@ -27,8 +27,10 @@
 <div class="container mt-3 bg-white p-4 rounded">
   <div class="row gap-1 align-items-start">
     <div class="col grade_pag_base d-flex justify-content-center">
-      <button type="button" class="button mt-3">
-        <span class="button__text">Solicitar novo</span>
+      <button type="button" class="button mt-3" onclick="redirectNewSolci()">
+        <span class="button__text">
+          <a href="{% url 'new_solici' %}" class="button__text">Solicitado</a>
+        </span>
         <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24" fill="none" class="svg"><line y2="19" y1="5" x2="12" x1="12"></line><line y2="12" y1="12" x2="19" x1="5"></line></svg></span>
       </button>
     </div>

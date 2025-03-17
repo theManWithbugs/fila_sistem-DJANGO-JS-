@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
 
+<div class="container w-50" id="box_solicitar">
+    <div>
+        <span class="text-white d-flex justify-content-center mb-3 fs-4">(Nome do solicitante: {{ request.user.username }})</span>
+
+        <form action="{% url 'new_solici' %}" class="mb-3" method="POST" id="meuForm">
+            {% csrf_token %}
+            {{ form.as_p }}     
+            <button type="submit" class="mt-2 d-flex btn btn-info" id="btn_form">Enviar</button>
+        </form>
+
+    </div>
+</div>
+
 {% endblock content %}
+
+{% block js %}
+    <script src="{% static 'js/solicitacao.js' %}"></script>
+{% endblock js  %}

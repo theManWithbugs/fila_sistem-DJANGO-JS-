@@ -5,6 +5,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.http import JsonResponse
 from django.contrib.auth.models import User
+from .models import *
+from .forms import *
 
 msgSucesso = 'Operação realizada com sucesso!'
 msgError = 'Ambos os campos devem ser preenchidos!'
@@ -67,6 +69,29 @@ def home_view(request):
 
 @login_required
 def nova_solicitacao(request):
-  template_name = 'include/nova_solicitacao.html'
-  return render(request, template_name)
+    template_name = 'include/nova_solicitacao.html'
     
+    form = SolicitacaoForm()
+    
+    if request.method == 'POST':
+        form = SolicitacaoForm(request.POST)
+        if form.is_valid():
+            try:
+                form = form.save(commit=False)
+                form.save()
+                form = SolicitacaoForm()
+                messages.success(request, 'Realizado com sucesso!')
+            except AbrirSolicitacao.DoesNotExist:
+                messages.error(request, 'Não foi possível prosseguir!')
+        else:
+            messages.error(request, 'Formulario invalido!')
+
+    context = {
+        'form': form
+    }        
+
+    return render(request, template_name, context)
+
+    
+    
+
