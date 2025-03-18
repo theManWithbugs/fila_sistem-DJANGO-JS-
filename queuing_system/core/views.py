@@ -79,12 +79,14 @@ def nova_solicitacao(request):
             try:
                 form = form.save(commit=False)
                 form.save()
-                form = SolicitacaoForm()
-                messages.success(request, 'Realizado com sucesso!')
+                messages.success(request, 'Operação realizada com sucesso!')
+                return redirect('new_solici')
             except AbrirSolicitacao.DoesNotExist:
                 messages.error(request, 'Não foi possível prosseguir!')
         else:
             messages.error(request, 'Formulario invalido!')
+    else:
+        form = SolicitacaoForm()
 
     context = {
         'form': form

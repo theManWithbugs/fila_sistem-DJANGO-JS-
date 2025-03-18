@@ -5,14 +5,15 @@
 
 <div class="container w-50" id="box_solicitar">
     <div>
-        <span class="text-white d-flex justify-content-center mb-3 fs-4">(Nome do solicitante: {{ request.user.username }})</span>
+        <span class="text-white d-flex justify-content-center mb-3 fs-4">
+            (Nome do solicitante: {{ request.user.username }})
+        </span>
 
         <form action="{% url 'new_solici' %}" class="mb-3" method="POST" id="meuForm">
             {% csrf_token %}
-            {{ form.as_p }}     
-            <button type="submit" class="mt-2 d-flex btn btn-info" id="btn_form">Enviar</button>
+            {{ form.as_p }}   
+            <button type="submit" class="mt-2 btn btn-info" id="btn_form" style="margin: 43%; width: 100px;">Enviar</button>
         </form>
-
     </div>
 </div>
 
