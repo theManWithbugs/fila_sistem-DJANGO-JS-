@@ -1,0 +1,111 @@
+body {
+    background-image: url('../img/painted-concrete-background.jpg');
+    background-position: cover;
+    background-size: cover;
+}
+
+footer {
+    padding: 10px;
+}
+
+footer .text-white {
+    margin-left: 36%;
+}
+
+.grade_pag_base {
+    background-color: white;
+}
+
+#img_footer {
+    width: 20px;
+    height: 20px;
+}
+
+#user_cont1 {
+    margin-left: 1300px;
+}
+
+#user_cont2 {
+    margin-left: 38px;
+}
+
+#box_solicitar {
+    background-color: rgb(118, 118, 118);
+    padding: 10px;
+    height: 300px;
+    border-radius: 5px;
+}
+
+.grade_pag_base {
+    padding: 5px;
+    height: 100px;
+    border: 1px solid black;
+}
+
+/* para aparelhos android */
+
+/* para tamanhos de tela variaveis */
+
+@media (max-width: 1880px) {
+    #user_cont1 {
+        margin-left: 1200px;
+    }
+}
+
+@media (max-width: 1770px) {
+    #user_cont1 {
+        margin-left: 1100px;
+    }
+}
+
+@media (max-width: 1540px) {
+    #user_cont1 {
+        margin-left: 1050px;
+    }
+
+    #user_cont2 {
+        margin-left: 40px;
+    }
+}
+
+@media (max-width: 1630px) {
+    #user_cont1 {
+        margin-left: 1000px;
+    }
+}
+
+@media (max-width: 1540px) {
+    #user_cont1 {
+        margin-left: 900px;
+    }
+}
+
+@media (max-width: 1400px) {
+    #user_cont1 {
+        margin-left: 750px;
+    }
+}
+
+@media (max-width: 1250px) {
+    #user_cont1 {
+        margin-left: 560px;
+    }
+}
+
+@media (max-width: 1100px) {
+    #user_cont1 {
+        margin-left: 500px;
+    }
+}
+
+@media (max-width: 1000px) {
+    #user_cont1 {
+        margin-left: 380px;
+    }
+}
+
+
+
+
+
+

@@ -10,7 +10,12 @@ class SolicitacaoForm(forms.ModelForm):
             'info': forms.Textarea(attrs={
                 'class': 'form-control form-control-sm',
                 'rows': 4, 
-                'placeholder': 'Digite informações aqui...',  
+                'placeholder': 'Digite informações aqui...',
+            }),
+            'prioridade': forms.Select(attrs={
+                'class': 'form-select',
+                'size': 3,
+                'placeholder': 'Selecione a prioridade...',
             }),
         }
     

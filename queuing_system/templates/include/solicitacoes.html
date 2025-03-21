@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mt-3 p-4 rounded">
+    <div class="row gap-1 align-items-start">
+      <div class="col grade_pag_base">
+        <span class="d-flex justify-content-center mb-2">Baixa</span> 
+        <span class="d-flex justify-content-center">{{ baixa }}</span>
+      </div>
+        <div class="col grade_pag_base">
+          <span class="d-flex justify-content-center mb-2">Média</span> 
+          <span class="d-flex justify-content-center">{{ media }}</span>
+        </div>
+        <div class="col grade_pag_base">
+          <span class="d-flex justify-content-center mb-2">Alta</span>
+          <span class="d-flex justify-content-center">{{ alta }}</span>
+        </div>
+      <div class="col grade_pag_base">
+        <span class="d-flex justify-content-center mb-2">Urgente</span> 
+        <span class="d-flex justify-content-center">{{ urgente }}</span>
+      </div>
+      <div class="col grade_pag_base">
+        <span class="d-flex justify-content-center mb-2">Imediata</span>
+        <span class="d-flex justify-content-center">{{ imediata }}</span>
+      </div>
+    </div>
+</div>
+
+{% endblock content %}

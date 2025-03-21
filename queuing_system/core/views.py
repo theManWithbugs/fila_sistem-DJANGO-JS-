@@ -4,9 +4,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.http import JsonResponse
-from django.contrib.auth.models import User
 from .models import *
 from .forms import *
+from . utils import *
 
 msgSucesso = 'Operação realizada com sucesso!'
 msgError = 'Ambos os campos devem ser preenchidos!'
@@ -44,7 +44,7 @@ def user_view(request):
 
 @login_required
 def user_json(request):
-    user = User.objects.get(first_name=request.user.first_name)
+    user = request.user
     username = user.username
     email = user.email
     super_usuario = user.is_superuser
@@ -52,7 +52,7 @@ def user_json(request):
     data = {
         'username': username,
         'email': email,
-        'super_usuario': super_usuario,
+        'is_superuser': super_usuario,
     }
     
     return JsonResponse(data, safe=False)
@@ -65,7 +65,19 @@ def base_view(request):
 @login_required
 def home_view(request):
     template_name = 'home.html'
-    return render(request, template_name)
+
+    dados = solicData(request)
+
+    return render(request, template_name, {'dados': dados})
+
+def home_json(request):
+    dados = solicData(request)
+
+    data = {
+        'mensagem': 'nada ainda :(',
+        'dados': dados
+    }
+    return JsonResponse(data)
 
 @login_required
 def nova_solicitacao(request):
@@ -78,6 +90,7 @@ def nova_solicitacao(request):
         if form.is_valid():
             try:
                 form = form.save(commit=False)
+                form.nome_solicitante = request.user.username
                 form.save()
                 messages.success(request, 'Operação realizada com sucesso!')
                 return redirect('new_solici')
@@ -91,6 +104,28 @@ def nova_solicitacao(request):
     context = {
         'form': form
     }        
+
+    return render(request, template_name, context)
+
+def solicitacoesView(request):
+    template_name = 'include/solicitacoes.html'
+
+    query_dados = solicitacoesFila(request)
+
+    baixo = query_dados[0]
+    media = query_dados[1]
+    alta = query_dados[2]
+    urgente = query_dados[3]
+    imediata = query_dados[4]
+
+    context = {
+        'query_dados': query_dados,
+        'baixa': baixo,
+        'media': media,
+        'alta': alta,
+        'urgente': urgente,
+        'imediata': imediata,
+    }
 
     return render(request, template_name, context)
 

@@ -19,11 +19,11 @@
             </div>
             <form action="{% url 'login' %}" method="post">
               {% csrf_token %}
-              <div class="form__group field" style="margin-left: 27%; margin-top: -30px;">
+              <div class="form__group field" id="box_input1">
                 <input type="input" class="form__field" placeholder="Name" required="" autocomplete="off" name="username" id="username">
                 <label for="name" class="form__label">Usuario</label>
               </div>
-              <div class="form__group field" style="margin-left: 27%;">
+              <div class="form__group field" id="box_input2">
                 <input type="input" class="form__field" placeholder="senha" required="" autocomplete="off" name="senha" id="senha">
                 <label for="senha" class="form__label">Senha</label>
               </div>
@@ -34,8 +34,8 @@
                 </button>
               </div>
             </form>
-              <p class="d-flex justify-content-center" style="font-size: 12px; margin-top: 30%;">&copy; DDMS-Divisão de manutenção e desenvolvimento de sistemas
-                <img src="{% static 'img/IAPEN_full_box_icon_1024.ico' %}" style="width: 20px; height: 20px; margin-left: 4px;">
+              <p class="d-flex justify-content-center">&copy; DDMS-Divisão de manutenção e desenvolvimento de sistemas
+                <img src="{% static 'img/IAPEN_full_box_icon_1024.ico' %}" id="icon_login">
               </p>
         </div>
     </div>
